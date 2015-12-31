@@ -7,7 +7,7 @@ Remove duplicated files by SHA-256 hash
 
 It requires Node.js version 4 or superior.
 
-`npm install antoniobusrod/remove-duplicated-files`
+`npm install remove-duplicated-files`
 
 ## Usage
 ```
