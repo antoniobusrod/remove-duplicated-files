@@ -1,0 +1,34 @@
+{
+  "name": "remove-duplicated-files",
+  "version": "1.0.0",
+  "description": "Remove duplicated files",
+  "main": "index.js",
+  "bin": "cli",
+  "scripts": {
+    "test": "mocha --require co-mocha --require chai test"
+  },
+  "keywords": [
+    "remove",
+    "duplicated",
+    "files"
+  ],
+  "author": "Antonio Bustos <antoniobusrod@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4"
+  },
+  "engine": {
+    "node": ">=4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/antoniobusrod/remove-duplicated-files.git"
+  },
+  "dependencies": {
+    "co-mocha": "^1.1.2",
+    "commander": "^2.9.0",
+    "mz": "^2.1.0",
+    "rimraf-promise": "^2.0.0"
+  }
+}

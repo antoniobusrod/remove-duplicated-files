@@ -1,0 +1,42 @@
+#!/usr/bin/env node
+
+const path = require('path');
+const program = require('commander');
+const co = require('co');
+
+const package = require('./package');
+const removeDuplicatedFiles = require('./index');
+
+function handleFileRemoved(fileName) {
+  console.log(fileName, 'duplicated file removed!')
+}
+
+(function() {
+  program
+    .version(package.version)
+    .description('Remove duplicated files by SHA-256 hash')
+    .usage('<dir>')
+    .parse(process.argv);
+
+  if (!program.args.length) {
+    console.error('Error: missing directory argument, see doucmentation');
+    process.exit(1);
+  }
+
+  const dir = program.args[0];
+  if (!path.isAbsolute(dir)) {
+    dir = path.join(process.cwd(), dir);
+  }
+
+  co(function* cliRemoveDuplicatedFiles() {
+    removeDuplicatedFiles.emitter.on('file-removed', handleFileRemoved);
+    yield removeDuplicatedFiles(dir);
+    console.log('Good-bye!');
+    process.exit();
+  }).catch(function(err) {
+    console.error(err.toString());
+    process.exit(err.code || 1);
+  });
+
+})();
+
