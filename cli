@@ -23,7 +23,7 @@ function handleFileRemoved(fileName) {
     process.exit(1);
   }
 
-  const dir = program.args[0];
+  let dir = program.args[0];
   if (!path.isAbsolute(dir)) {
     dir = path.join(process.cwd(), dir);
   }
